@@ -1,0 +1,17 @@
+.navBar {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1rem;
+  background-color: #877495;
+  color: white;
+
+  a {
+    color: white;
+    text-decoration: none;
+    margin-left: 1rem;
+  }
+  button {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
