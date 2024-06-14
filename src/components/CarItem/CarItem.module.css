@@ -1,0 +1,63 @@
+.itemContainer{
+  display: flex;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+  width: 274px;
+  height: 426px;
+  border-radius: 14px;
+}
+.carItem {
+  display: flex;
+  flex-direction: column;
+  
+
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  }
+    
+
+
+
+.carImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+}
+.imgContainer {
+  width: 274px;
+  height: 268px;
+}
+
+.line1,
+.line2,
+.line3 {
+  display: flex;
+  justify-content: space-between;
+}
+.line2,
+.line3 {
+  font-size: 12px;
+}
+.line1 {
+  font-size: 16px;
+}
+.likeBtn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: transparent;
+}
+.loadBtn{
+  width: 100%;
+  padding: 10px 0;
+  border: 1px solid #3470FF;
+  border-radius: 12px;
+  background-color: #3470FF;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}

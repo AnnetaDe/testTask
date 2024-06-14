@@ -1,31 +1,21 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { contactsReducer } from './contacts/slice';
-import { filtersReducer } from './filter/filtersSlice';
-import {
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-  persistStore,
-  persistReducer,
-} from 'redux-persist';
+import { FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER, persistStore } from 'redux-persist';
+import { carsReducer } from './cars/slice';
 import storage from 'redux-persist/lib/storage';
-import { authReducer } from './auth/slice';
+import persistReducer from 'redux-persist/es/persistReducer';
+import { modalSliceReducer } from './cars/modalSlice';
 
-const persistConfig = {
-  key: 'auth',
+export const persistConfig = {
+  key: 'cars',
   version: 1,
   storage,
-  whitelist: ['token'],
+  whitelist: ['liked'],
 };
 
 export const store = configureStore({
   reducer: {
-    contacts: contactsReducer,
-    filters: filtersReducer,
-    auth: persistReducer(persistConfig, authReducer),
+    cars: persistReducer(persistConfig, carsReducer),
+    modal: modalSliceReducer,
   },
 
   middleware: getDefaultMiddleware =>
@@ -34,5 +24,6 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
+  devTools: import.meta.env.MODE !== 'production',
 });
 export const persistor = persistStore(store);
