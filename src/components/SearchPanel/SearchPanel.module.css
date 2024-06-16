@@ -1,0 +1,22 @@
+.searchPanel {
+  display: flex;
+  gap: 18px;
+
+  margin-bottom: 50px;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #1214170d;
+  border-radius: 10px;
+}
+.fromTo {
+  display: flex;
+}
+.selectFrom {
+  border-radius: 14px 0 0 14px;
+}

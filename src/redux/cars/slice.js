@@ -1,35 +1,37 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getCarOper } from './operations';
+import { getAll, getCarOper } from './operations';
+import { all } from 'axios';
 
 const carsSlice = createSlice({
   name: 'cars',
   initialState: {
     items: [],
-    isLoading: false,
-    isError: false,
     liked: [],
     currentPage: 1,
     perPage: 12,
     moreToLoad: true,
-    count: 0,
+    countPages: 0,
+    allItems: [],
+    allBrands: [],
+    isLoading: false,
+    isError: false,
   },
 
   selectors: {
-    selectCars: state => state.items,
-    selectIsLoading: state => state.isLoading,
-    selectIsError: state => state.error,
+    selectCarsToDisplay: state => state.items,
     selectLiked: state => state.liked,
-    selectCurrentPage: state => state.currentPage,
-    selectPerPage: state => state.perPage,
-    selectMoreToLoad: state => state.moreToLoad,
-    selectCount: state => state.count,
+    // selectAllBrands: state => state.allBrands,
   },
   reducers: {
     loadMore(state) {
       state.currentPage++;
+      state.items = state.allItems.slice(0, state.currentPage * state.perPage);
+      if (state.countPages < state.currentPage) {
+        state.moreToLoad = false;
+      }
     },
     likeCar(state, { payload }) {
-      const item = state.items.find(item => item.id === payload.id);
+      const item = state.allItems.find(item => item.id === payload.id);
       if (item) {
         const index = state.liked.findIndex(item => item.id === payload.id);
         if (index === -1) {
@@ -39,20 +41,23 @@ const carsSlice = createSlice({
         }
       }
     },
+    resetPagination(state) {
+      state.currentPage = 1;
+      state.items = state.allItems.slice(0, state.perPage);
+      state.moreToLoad = true;
+    },
   },
 
   extraReducers: builder => {
     builder
 
-      .addCase(getCarOper.fulfilled, (state, { payload }) => {
+      .addCase(getAll.fulfilled, (state, { payload }) => {
+        // state.items = payload.slice(0, state.perPage);
+        state.allItems = payload;
         state.isLoading = false;
         state.isError = false;
-        state.count = payload.length;
-        if (state.count < state.items.length) {
-          state.moreToLoad = false;
-        }
-        state.items = [...state.items, ...payload];
-        state.displayedItems = payload.slice(0, state.perPage);
+        state.allBrands = payload.map(item => item.make);
+        state.countPages = payload.length / 12;
       })
 
       .addMatcher(
@@ -81,8 +86,9 @@ const carsSlice = createSlice({
 
 export const carsReducer = carsSlice.reducer;
 export const {
-  selectCount,
-  selectCars,
+  selectCountPages,
+  selectCarsToDisplay,
+  selectAllCars,
   selectIsLoading,
   selectIsError,
   selectLiked,

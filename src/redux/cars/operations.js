@@ -9,11 +9,23 @@ export const getCarOper = createAsyncThunk(
         params: {
           page: currentPage,
           limit: perPage,
+          // sortBy: 'make',
         },
       });
+      console.log('response', response);
       return response.data;
     } catch (error) {
       return thunkApi.rejectWithValue(error);
     }
   }
 );
+
+export const getAll = createAsyncThunk('advert/getAll', async thunkApi => {
+  try {
+    const response = await mockApi.get(`advert`, {});
+    console.log('responseAll', response);
+    return response.data;
+  } catch (error) {
+    return thunkApi.rejectWithValue(error);
+  }
+});

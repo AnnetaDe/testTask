@@ -89,7 +89,9 @@ export const Modal = () => {
             Price: <span style={{ color: '#3470FF' }}> {car.rentalPrice}</span>
           </li>
         </ul>
-        <button className={s.rentBtn}>Rent this car</button>
+        <button className={s.rentBtn}>
+          <a href={'tel:+380730000000'}>Rent this car</a>
+        </button>
       </div>
     </div>
   );

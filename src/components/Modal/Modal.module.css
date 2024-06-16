@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,7 +12,7 @@
 }
 
 .modal {
-  height: 752px;
+  height: auto;
   width: 541px;
   background-color: white;
   padding: 35px;
@@ -144,6 +144,10 @@
   color: #fff;
   font-size: 14px;
   font-weight: 600;
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
 }
 .description {
   font-size: 14px;
