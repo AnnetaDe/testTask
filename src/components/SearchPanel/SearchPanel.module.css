@@ -17,6 +17,7 @@
 .fromTo {
   display: flex;
 }
-.selectFrom {
-  border-radius: 14px 0 0 14px;
+
+.fromToSelectors {
+  display: flex;
 }
