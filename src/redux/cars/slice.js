@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getAll, getCarOper } from './operations';
-import { all } from 'axios';
+import { getAll } from './operations';
 
 const carsSlice = createSlice({
   name: 'cars',
@@ -17,10 +16,6 @@ const carsSlice = createSlice({
     isError: false,
   },
 
-  selectors: {
-    selectCarsToDisplay: state => state.items,
-    selectLiked: state => state.liked,
-  },
   reducers: {
     loadMore(state) {
       state.currentPage++;
@@ -84,15 +79,4 @@ const carsSlice = createSlice({
 });
 
 export const carsReducer = carsSlice.reducer;
-export const {
-  selectCountPages,
-  selectCarsToDisplay,
-  selectAllCars,
-  selectIsLoading,
-  selectIsError,
-  selectLiked,
-  selectCurrentPage,
-  selectPerPage,
-  selectMoreToLoad,
-} = carsSlice.selectors;
 export const { loadMore, likeCar } = carsSlice.actions;

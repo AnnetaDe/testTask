@@ -6,7 +6,7 @@ export const Layout = () => {
   return (
     <div className={s.layout}>
       <header>
-        <p>Hello, {''}</p>
+        <p> {''}</p>
         <NavBar />
       </header>
       <main className={s.main}>

@@ -1,8 +1,8 @@
 .searchPanel {
   display: flex;
   gap: 18px;
-
   margin-bottom: 50px;
+  justify-content: center;
 }
 ::-webkit-scrollbar {
   width: 10px;

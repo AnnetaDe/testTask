@@ -9,7 +9,6 @@ import { Favorites } from './pages/Favorites/Favorites.jsx';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getAll } from './redux/cars/operations.js';
-import { postJSON } from './config/postAllCars.js';
 
 function App() {
   const dispatch = useDispatch();
@@ -18,7 +17,6 @@ function App() {
     dispatch(getAll());
   }, [dispatch]);
 
-  // postJSON();
   return (
     <Routes>
       <Route path="/" element={<Layout />}>

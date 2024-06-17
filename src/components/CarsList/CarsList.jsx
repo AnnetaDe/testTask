@@ -11,6 +11,7 @@ import {
   selectIsLoading,
   selectIsError,
 } from '../../redux/filter/filterSelectors';
+import { Loader } from '../Loader/Loader';
 
 export const CarsList = () => {
   const dispatch = useDispatch();
@@ -29,7 +30,9 @@ export const CarsList = () => {
     dispatch(loadMore());
   };
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <div className={s.carListWrapper}>
       <ul className={s.carsList}>
         {filteredCars.map(car => (

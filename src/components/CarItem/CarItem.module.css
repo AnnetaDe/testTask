@@ -27,7 +27,6 @@
   width: 274px;
   height: 268px;
   margin-bottom: 14px;
-  border: 1px solid #761111;
 }
 .texContainer {
   padding: 0 4px;
@@ -84,6 +83,7 @@
 }
 
 .learnBtn {
+  margin-top: 28px;
   width: 100%;
   padding: 10px 0;
   border: 1px solid #3470ff;

@@ -1,9 +1,17 @@
-import { InfinitySpin } from 'react-loader-spinner';
+import { Watch } from 'react-loader-spinner';
 
 export const Loader = () => {
   return (
     <div>
-      <InfinitySpin visible={true} width="200" color="#4fa94d" ariaLabel="infinity-spin-loading" />
+      <Watch
+        visible={true}
+        width="200"
+        color="#0b44cd"
+        ariaLabel="infinity-spin-loading"
+        wrapperStyle={{
+          justifyContent: 'center',
+        }}
+      />
     </div>
   );
 };

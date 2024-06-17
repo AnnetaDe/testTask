@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { CarItem } from '../CarItem/CarItem';
-import { selectLiked } from '../../redux/cars/slice';
+import { selectLiked } from '../../redux/filter/filterSelectors.js';
 import s from './LikedList.module.css';
 
 export const LikedList = () => {
