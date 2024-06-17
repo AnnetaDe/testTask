@@ -14,10 +14,18 @@
   background: #1214170d;
   border-radius: 10px;
 }
-.fromTo {
-  display: flex;
-}
-
+.fromTo,
 .fromToSelectors {
   display: flex;
+}
+.select,
+.selectFrom {
+  margin-top: 8px;
+}
+
+.label {
+  color: #8a8a89;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
 }

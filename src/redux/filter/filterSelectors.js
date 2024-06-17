@@ -15,6 +15,7 @@ export const selectIsError = state => state.cars.isError;
 export const selectAllBrands = state => state.cars.liked;
 export const selectFilter = state => state.filters;
 export const selectLiked = state => state.cars.liked;
+export const selectDaily = state => state.daily.dailylist;
 
 export const selectFilteredCars = createSelector(
   [

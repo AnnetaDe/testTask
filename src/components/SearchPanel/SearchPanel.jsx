@@ -32,7 +32,9 @@ export const SearchPanel = () => {
   return (
     <div className={s.searchPanel}>
       <div>
-        <label htmlFor="brand">Car brand</label>
+        <label className={s.label} htmlFor="brand">
+          Car brand
+        </label>
         <Select
           inputId="brand"
           classNames={s.select}
@@ -45,8 +47,11 @@ export const SearchPanel = () => {
         />
       </div>
       <div>
-        <label htmlFor="price">Price/ 1 hour</label>
+        <label className={s.label} htmlFor="price">
+          Price/ 1 hour
+        </label>
         <Select
+          classNames={s.select}
           inputId="price"
           classNames={s.select}
           styles={searchPanelStyles}
@@ -58,7 +63,9 @@ export const SearchPanel = () => {
       </div>
       <div className={s.fromTo}>
         <div>
-          <label htmlFor="from">Сar mileage / km</label>
+          <label className={s.label} htmlFor="from">
+            Сar mileage / km
+          </label>
           <div className={s.fromToSelectors}>
             <Select
               inputId="from"

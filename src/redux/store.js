@@ -5,19 +5,27 @@ import storage from 'redux-persist/lib/storage';
 import persistReducer from 'redux-persist/es/persistReducer';
 import { modalSliceReducer } from './cars/modalSlice';
 import { filtersSliceReducer } from './filter/filtersSlice';
+import { dailySliceReducer } from './daily/dailySlice';
 
-export const persistConfig = {
-  key: 'cars',
+export const persistConfigLiked = {
+  key: ['liked'],
   version: 1,
   storage,
   whitelist: ['liked'],
 };
+export const persistConfigDaily = {
+  key: ['daily'],
+  version: 1,
+  storage,
+  whitelist: ['daily'],
+};
 
 export const store = configureStore({
   reducer: {
-    cars: persistReducer(persistConfig, carsReducer),
+    cars: persistReducer(persistConfigLiked, carsReducer),
     filters: filtersSliceReducer,
     modal: modalSliceReducer,
+    daily: persistReducer(persistConfigDaily, dailySliceReducer),
   },
 
   middleware: getDefaultMiddleware =>

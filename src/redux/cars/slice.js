@@ -35,11 +35,6 @@ const carsSlice = createSlice({
         }
       }
     },
-    resetPagination(state) {
-      state.currentPage = 1;
-      state.items = state.allItems.slice(0, state.perPage);
-      state.moreToLoad = true;
-    },
   },
 
   extraReducers: builder => {

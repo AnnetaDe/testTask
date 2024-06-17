@@ -30,7 +30,7 @@ export const CarItem = ({ car }) => {
             <p>{car.make}</p>
             <p className={s.model}>{car.model}</p>
             <p>{car.year}</p>
-            <p> {car.rentalPrice}</p>
+            <p className={s.price}> {car.rentalPrice}</p>
           </div>
 
           <div className={s.line2}>

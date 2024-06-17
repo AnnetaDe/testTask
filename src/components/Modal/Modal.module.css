@@ -8,11 +8,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000; /* Ensure the modal is above other content */
+  z-index: 1000;
 }
 
 .modal {
-  height: auto;
   width: 541px;
   background-color: white;
   padding: 35px;

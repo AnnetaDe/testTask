@@ -9,7 +9,6 @@ export const getCarOper = createAsyncThunk(
         params: {
           page: currentPage,
           limit: perPage,
-          // sortBy: 'make',
         },
       });
       console.log('response', response);
@@ -26,5 +25,24 @@ export const getAll = createAsyncThunk('advert/get', async (_, thunkApi) => {
     return response.data;
   } catch (error) {
     return thunkApi.rejectWithValue(error);
+  }
+});
+
+export const getDaily = createAsyncThunk('advert/daily', async (_, thunkApi) => {
+  const lastUpdate = localStorage.getItem('lastUpdate');
+  const timeNow = new Date().getTime();
+  const timeDiff = timeNow - lastUpdate;
+  const minutes = timeDiff / (1000 * 60 * 60 * 60);
+  if (minutes > 1) {
+    try {
+      const response = await mockApi.get(`advert`);
+      const mix = response.data.sort(() => 0.5 - Math.random()).slice(0, 4);
+
+      return mix;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error);
+    }
+  } else {
+    return JSON.parse(localStorage.getItem('daily'));
   }
 });

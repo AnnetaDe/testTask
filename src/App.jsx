@@ -8,13 +8,14 @@ import { Catalog } from './pages/Cars/Catalog.jsx';
 import { Favorites } from './pages/Favorites/Favorites.jsx';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { getAll } from './redux/cars/operations.js';
+import { getAll, getDaily } from './redux/cars/operations.js';
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAll());
+    dispatch(getDaily());
   }, [dispatch]);
 
   return (
