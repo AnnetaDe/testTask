@@ -1,17 +1,33 @@
 .navBar {
   display: flex;
-  align-items: center;
   padding: 24px 24px;
-  background-color: #877495;
-  color: white;
+  color: rgba(18, 20, 23, 0.5);
+  font-family: var(--font-family-2);
 
   a {
-    color: white;
+    color: rgba(18, 20, 23, 0.5);
     text-decoration: none;
     margin-left: 1rem;
+    padding: 24px;
   }
-  button {
-    margin-left: 16px;
-    margin-right: 16px;
+  a:hover {
+    color: #3470ff;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
   }
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  align-items: center;
+  color: rgba(18, 20, 23, 0.5);
+}
+.title {
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 32px;
+  color: #121417;
+  font-family: var(--font-family-2);
+  /* margin: auto 200px; */
 }
