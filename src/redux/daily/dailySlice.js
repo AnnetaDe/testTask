@@ -16,8 +16,8 @@ const dailySlice = createSlice({
     builder
 
       .addCase(getDaily.fulfilled, (state, { payload }) => {
-        state.lastUpdate = new Date().getTime();
-        state.dailylist = payload;
+        state.lastUpdate = payload.lastUpdate;
+        state.dailylist = payload.mix;
         state.isLoading = false;
         state.isError = false;
       })

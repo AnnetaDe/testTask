@@ -9,9 +9,9 @@ export const DailyPicksList = () => {
     <div>
       DailyPicksList
       <ul>
-        {daily.map(item => (
-          <li key={item.id}>
-            {item.make} {item.model}
+        {daily.map(({ id, make, model }) => (
+          <li key={id}>
+            {make} {model}
           </li>
         ))}
       </ul>
