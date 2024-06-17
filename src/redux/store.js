@@ -7,25 +7,32 @@ import { modalSliceReducer } from './cars/modalSlice';
 import { filtersSliceReducer } from './filter/filtersSlice';
 import { dailySliceReducer } from './daily/dailySlice';
 
-export const persistConfigLiked = {
-  key: ['liked'],
+export const persistedLikedCars = {
+  key: ['likedCars'],
   version: 1,
   storage,
   whitelist: ['liked'],
 };
-export const persistConfigDaily = {
-  key: ['daily'],
+export const persistedDailyUpdates = {
+  key: ['lastUpdate'],
   version: 1,
   storage,
-  whitelist: ['daily'],
+  whitelist: ['lastUpdate', 'dailylist'],
 };
+// export const persistedDailyList = {
+//   key: ['dailylist'],
+//   version: 1,
+//   storage,
+//   whitelist: ['dailylist'],
+// };
 
 export const store = configureStore({
   reducer: {
-    cars: persistReducer(persistConfigLiked, carsReducer),
+    cars: persistReducer(persistedLikedCars, carsReducer),
     filters: filtersSliceReducer,
     modal: modalSliceReducer,
-    daily: persistReducer(persistConfigDaily, dailySliceReducer),
+    daily: persistReducer(persistedDailyUpdates, dailySliceReducer),
+    dailyList: persistReducer(persistedDailyUpdates, dailySliceReducer),
   },
 
   middleware: getDefaultMiddleware =>

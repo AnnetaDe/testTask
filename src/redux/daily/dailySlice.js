@@ -5,7 +5,7 @@ const dailySlice = createSlice({
   name: 'daily',
   initialState: {
     dailylist: [],
-    update: '',
+    lastUpdate: null,
     isLoading: false,
     isError: false,
   },
@@ -16,6 +16,7 @@ const dailySlice = createSlice({
     builder
 
       .addCase(getDaily.fulfilled, (state, { payload }) => {
+        state.lastUpdate = new Date().getTime();
         state.dailylist = payload;
         state.isLoading = false;
         state.isError = false;

@@ -5,5 +5,16 @@ export const DailyPicksList = () => {
   const dispatch = useDispatch();
   const daily = useSelector(selectDaily);
   console.log('daily', daily);
-  return <div>DailyPicksList</div>;
+  return (
+    <div>
+      DailyPicksList
+      <ul>
+        {daily.map(item => (
+          <li key={item.id}>
+            {item.make} {item.model}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 };

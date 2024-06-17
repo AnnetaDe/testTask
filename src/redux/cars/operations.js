@@ -29,20 +29,25 @@ export const getAll = createAsyncThunk('advert/get', async (_, thunkApi) => {
 });
 
 export const getDaily = createAsyncThunk('advert/daily', async (_, thunkApi) => {
-  const lastUpdate = localStorage.getItem('lastUpdate');
+  const updatedAt = thunkApi.getState().daily.lastUpdate;
   const timeNow = new Date().getTime();
-  const timeDiff = timeNow - lastUpdate;
-  const minutes = timeDiff / (1000 * 60 * 60 * 60);
+
+  const timeDiff = timeNow - updatedAt;
+  const minutes = timeDiff / 1000 / 60;
+  console.log('timeNow', timeNow);
+  console.log('lastUpdate', updatedAt);
+  console.log('timeDiff', timeDiff);
+  console.log('minutes', minutes);
   if (minutes > 1) {
     try {
       const response = await mockApi.get(`advert`);
       const mix = response.data.sort(() => 0.5 - Math.random()).slice(0, 4);
+      // localStorage.setItem('dailyList', JSON.stringify(mix));
+      // localStorage.setItem('lastUpdate', new Date().getTime());
 
       return mix;
     } catch (error) {
       return thunkApi.rejectWithValue(error);
     }
-  } else {
-    return JSON.parse(localStorage.getItem('daily'));
   }
 });
