@@ -1,5 +1,3 @@
-import { RxFontStyle } from 'react-icons/rx';
-import { SearchPanel } from './SearchPanel';
 export const searchPanelStyles = {
   control: (baseStyles, state) => ({
     ...baseStyles,

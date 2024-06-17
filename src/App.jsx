@@ -6,10 +6,10 @@ import { NotFound } from './pages/NotFound/NotFound.jsx';
 import { Home } from './pages/Home';
 import { Catalog } from './pages/Cars/Catalog.jsx';
 import { Favorites } from './pages/Favorites/Favorites.jsx';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectCurrentPage, selectPerPage } from './redux/cars/slice.js';
+import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { getAll, getCarOper } from './redux/cars/operations.js';
+import { getAll } from './redux/cars/operations.js';
+import { postJSON } from './config/postAllCars.js';
 
 function App() {
   const dispatch = useDispatch();
@@ -18,6 +18,7 @@ function App() {
     dispatch(getAll());
   }, [dispatch]);
 
+  // postJSON();
   return (
     <Routes>
       <Route path="/" element={<Layout />}>

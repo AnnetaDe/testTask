@@ -4,13 +4,20 @@
   justify-content: center;
   gap: 20px;
 }
-.loadMoreBtn{
-  color:#3470FF;
-
-  padding: 10px 0;
-  border: 1px solid transparent;
-  border-radius: 12px;
+.loadMoreBtn {
+  color: #3470ff;
   background-color: transparent;
-  border: #3470FF solid 1px;
-  
+  text-decoration: underline;
+  border: transparent;
+}
+.loadMoreBtn:hover {
+  border: transparent;
+  background-color: transparent;
+  color: #0b44cd;
+}
+.carListWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }

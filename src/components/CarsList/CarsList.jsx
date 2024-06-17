@@ -30,7 +30,7 @@ export const CarsList = () => {
   };
 
   return (
-    <div>
+    <div className={s.carListWrapper}>
       <ul className={s.carsList}>
         {filteredCars.map(car => (
           <CarItem key={car.id} car={car} />
@@ -38,7 +38,7 @@ export const CarsList = () => {
       </ul>
       {isLoading && <p>Loading...</p>}
       {isError && <p>Error fetching cars.</p>}
-      {!isLoading && !isError && moreToLoad && (
+      {!isLoading && !isError && moreToLoad && filteredCars.length >= 12 && (
         <button className={s.loadMoreBtn} onClick={handleLoadMore}>
           Load More
         </button>

@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
 import s from './SearchPanel.module.css';
-
 import { selectAllCars } from '../../redux/filter/filterSelectors';
 import {
   setBrandFilter,

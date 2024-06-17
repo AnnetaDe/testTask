@@ -20,7 +20,6 @@ const carsSlice = createSlice({
   selectors: {
     selectCarsToDisplay: state => state.items,
     selectLiked: state => state.liked,
-    // selectAllBrands: state => state.allBrands,
   },
   reducers: {
     loadMore(state) {

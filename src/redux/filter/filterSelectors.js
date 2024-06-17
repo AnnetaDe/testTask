@@ -13,6 +13,7 @@ export const selectCountPages = state => state.cars.countPages;
 export const selectIsLoading = state => state.cars.isLoading;
 export const selectIsError = state => state.cars.isError;
 export const selectAllBrands = state => state.cars.liked;
+export const selectFilter = state => state.filters;
 
 export const selectFilteredCars = createSelector(
   [
@@ -23,6 +24,7 @@ export const selectFilteredCars = createSelector(
     selectToFilter,
     selectCurrentPage,
     selectPerPage,
+    selectMoreToLoad,
   ],
   (cars, brand, price, from, to, currentPage, perPage) => {
     const filteredCars = cars.filter(car => {
@@ -30,22 +32,10 @@ export const selectFilteredCars = createSelector(
       const priceMatch = price ? toNumber(car.rentalPrice) <= price : true;
       const fromMatch = from ? car.mileage >= from : true;
       const toMatch = to ? car.mileage <= to : true;
+
       return brandMatch && priceMatch && fromMatch && toMatch;
     });
 
     return filteredCars.slice(0, currentPage * perPage);
   }
 );
-
-// export const selectFilteredCarsCount = createSelector(
-//   [selectAllCars, selectBrandFilter, selectPriceFilter, selectFromFilter, selectToFilter],
-//   (cars, brand, price, from, to) => {
-//     return cars.filter(car => {
-//       const brandMatch = brand ? car.make === brand : true;
-//       const priceMatch = price ? car.rentalPrice <= price : true;
-//       const fromMatch = from ? car.mileage >= from : true;
-//       const toMatch = to ? car.mileage <= to : true;
-//       return brandMatch && priceMatch && fromMatch && toMatch;
-//     }).length;
-//   }
-// );

@@ -19,11 +19,10 @@ export const getCarOper = createAsyncThunk(
     }
   }
 );
-
-export const getAll = createAsyncThunk('advert/getAll', async thunkApi => {
+export const getAll = createAsyncThunk('advert/get', async (_, thunkApi) => {
   try {
-    const response = await mockApi.get(`advert`, {});
-    console.log('responseAll', response);
+    const response = await mockApi.get(`advert`);
+    console.log('response', response.data);
     return response.data;
   } catch (error) {
     return thunkApi.rejectWithValue(error);

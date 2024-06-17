@@ -6,6 +6,7 @@ const initialState = {
     price: Infinity,
     from: 0,
     to: Infinity,
+    loadMore: true,
   },
 };
 
@@ -27,9 +28,7 @@ export const filtersSlice = createSlice({
     setToFilter: (state, { payload }) => {
       state.to = payload;
     },
-    resetFilters() {
-      return initialState;
-    },
+
     setCurrentPage: (state, { payload }) => {
       state.currentPage = payload;
     },

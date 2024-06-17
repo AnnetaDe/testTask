@@ -12,7 +12,7 @@ export const formatMileage = cars =>
   cars
     .map(car => ({
       value: Math.ceil(car.mileage / 100) * 100,
-      label: (Math.ceil(car.mileage / 100) * 100).toLocaleString('en-US') + ' miles',
+      label: (Math.ceil(car.mileage / 100) * 100).toLocaleString('en-US') + ' km',
     }))
     .sort((a, b) => a.value - b.value);
 export const formatMakes = cars =>
