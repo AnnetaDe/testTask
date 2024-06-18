@@ -1,0 +1,91 @@
+.dailyList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 1200px;
+}
+.dailyItem {
+  position: relative;
+  color: white;
+  text-align: center;
+  border-radius: 14px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+}
+.dailyImg {
+  height: 100%;
+  border-radius: 14px;
+  display: block;
+  cursor: pointer;
+}
+.dailyItem :hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transform: offsetY(-4px);
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.dailyItem:hover .overlay {
+  opacity: 1;
+}
+
+.overlayCont {
+  text-align: center;
+}
+
+.make {
+  font-family: var(--font-family-2);
+  margin: 0;
+  font-size: 46px;
+  margin: 15px 0 10px;
+  font-weight: 300;
+  color: #efefefa0;
+}
+.make :hover {
+  position: absolute;
+}
+.title {
+  font-family: var(--font-family-2);
+  font-size: 46px;
+  font-weight: 300;
+  color: #121417;
+}
+.dailyPicksContainer {
+  text-align: center;
+  justify-content: center;
+
+  height: 100vh;
+}
+.btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 14px;
+  background-color: #3571ff;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}
+.btn:hover {
+  background-color: #1f4ae5;
+}

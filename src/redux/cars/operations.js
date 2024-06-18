@@ -11,7 +11,6 @@ export const getCarOper = createAsyncThunk(
           limit: perPage,
         },
       });
-      console.log('response', response);
       return response.data;
     } catch (error) {
       return thunkApi.rejectWithValue(error);
@@ -21,7 +20,6 @@ export const getCarOper = createAsyncThunk(
 export const getAll = createAsyncThunk('advert/get', async (_, thunkApi) => {
   try {
     const response = await mockApi.get(`advert`);
-    console.log('response', response.data);
     return response.data;
   } catch (error) {
     return thunkApi.rejectWithValue(error);
@@ -34,10 +32,7 @@ export const getDaily = createAsyncThunk('advert/daily', async (_, thunkApi) => 
 
   const timeDiff = timeNow - savedUpdate;
   const minutes = timeDiff / 1000 / 60;
-  console.log('timeNow', timeNow);
-  console.log('checkUpd', savedUpdate);
-  console.log('timeDiff', timeDiff);
-  console.log('minutes', minutes);
+
   if (minutes > 1) {
     try {
       const response = await mockApi.get(`advert`);

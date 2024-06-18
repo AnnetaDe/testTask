@@ -6,7 +6,6 @@ import { cityCountry } from '../../helpers';
 export const Modal = () => {
   const dispatch = useDispatch();
   const car = useSelector(selectModalContent);
-  console.log('content', car);
 
   const close = () => {
     dispatch(closeModal());
@@ -17,7 +16,6 @@ export const Modal = () => {
     }
   };
   const handleCloseBtnClick = () => {
-    console.log('close btn click');
     close();
   };
 

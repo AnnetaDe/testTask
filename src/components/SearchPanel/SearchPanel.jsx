@@ -28,7 +28,6 @@ export const SearchPanel = () => {
   unicMileage.unshift({ value: '', label: 'All Mileage' });
   unicMake.unshift({ value: '', label: 'All brands' });
 
-  console.log('makes', makes);
   return (
     <div className={s.searchPanel}>
       <div>

@@ -1,6 +1,5 @@
 import { mockApi } from './mockApi';
 import cars from './cars';
-console.log('cars', cars);
 
 export const postJSON = async cars => {
   for (let i = 0; i < cars.length; i++) {
