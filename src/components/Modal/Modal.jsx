@@ -13,7 +13,6 @@ export const Modal = () => {
 
   const close = () => {
     dispatch(closeModal());
-    Navigate(backRef.current);
   };
   const handleBackDropClick = e => {
     if (e.target === e.currentTarget) {
