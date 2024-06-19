@@ -2,10 +2,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { closeModal, selectModalContent } from '../../redux/cars/modalSlice';
 import s from './Modal.module.css';
 import { cityCountry } from '../../helpers';
+import { useLocation } from 'react-router-dom';
 
 export const Modal = () => {
   const dispatch = useDispatch();
   const car = useSelector(selectModalContent);
+  const location = useLocation('/catalog');
 
   const close = () => {
     dispatch(closeModal());
