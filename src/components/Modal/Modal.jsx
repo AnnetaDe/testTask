@@ -2,15 +2,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { closeModal, selectModalContent } from '../../redux/cars/modalSlice';
 import s from './Modal.module.css';
 import { cityCountry } from '../../helpers';
-import { useLocation } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
+import { useRef } from 'react';
 
 export const Modal = () => {
   const dispatch = useDispatch();
   const car = useSelector(selectModalContent);
-  const location = useLocation('/catalog');
+  const location = useLocation();
+  const backRef = useRef(location);
 
   const close = () => {
     dispatch(closeModal());
+    Navigate(backRef.current);
   };
   const handleBackDropClick = e => {
     if (e.target === e.currentTarget) {

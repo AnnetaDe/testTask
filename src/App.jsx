@@ -7,8 +7,12 @@ import { Home } from './pages/Home';
 import { Catalog } from './pages/Cars/Catalog.jsx';
 import { Favorites } from './pages/Favorites/Favorites.jsx';
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { getAll, getDaily } from './redux/cars/operations.js';
+import { Loader } from './components/Loader/Loader.jsx';
+const Home = lazy(() => import('./pages/Home'));
+const Catalog = lazy(() => import('./pages/Cars/Catalog.jsx'));
+const Favorites = lazy(() => import('./pages/Favorites/Favorites.jsx'));
 
 function App() {
   const dispatch = useDispatch();
@@ -19,14 +23,14 @@ function App() {
   }, [dispatch]);
 
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
+    <Suspense fallback={<Loader />}>
+      <Routes>
         <Route index element={<Home />} />
-        <Route path="catalog" element={<Catalog />} />
+        <Route path="/catalog" element={<Catalog />} />{' '}
+        <Route path="/favorites" element={<Favorites />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="favorites" element={<Favorites />} />
-      </Route>
-    </Routes>
+      </Routes>
+    </Suspense>
   );
 }
 export default App;
