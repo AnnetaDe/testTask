@@ -22,8 +22,8 @@ function App() {
 
   return (
     <Suspense fallback={<Loader />}>
+      <Layout />
       <Routes>
-        <Layout />
         <Route index element={<Home />} />
         <Route path="/catalog" element={<Catalog />} />{' '}
         <Route path="/favorites" element={<Favorites />} />
