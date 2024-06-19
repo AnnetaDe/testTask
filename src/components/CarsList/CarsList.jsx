@@ -9,6 +9,7 @@ import {
   selectIsError,
 } from '../../redux/filter/filterSelectors';
 import { Loader } from '../Loader/Loader';
+import { useLocation } from 'react-router-dom';
 
 export const CarsList = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ export const CarsList = () => {
   const moreToLoad = useSelector(selectMoreToLoad);
   const isLoading = useSelector(selectIsLoading);
   const isError = useSelector(selectIsError);
+  const location = useLocation();
 
   const handleLoadMore = () => {
     dispatch(loadMore());

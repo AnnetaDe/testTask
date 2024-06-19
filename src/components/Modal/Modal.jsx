@@ -8,11 +8,14 @@ import { useRef } from 'react';
 export const Modal = () => {
   const dispatch = useDispatch();
   const car = useSelector(selectModalContent);
-  const location = useLocation();
   const backRef = useRef(location);
+  console.log(backRef.current);
 
   const close = () => {
     dispatch(closeModal());
+    if (backRef.current.state) {
+      backRef.current.state = null;
+    }
   };
   const handleBackDropClick = e => {
     if (e.target === e.currentTarget) {

@@ -9,6 +9,7 @@ import { Favorites } from './pages/Favorites/Favorites.jsx';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getAll, getDaily } from './redux/cars/operations.js';
+import { Modal } from './components/Modal/Modal.jsx';
 
 function App() {
   const dispatch = useDispatch();
@@ -22,8 +23,8 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="catalog" element={<Catalog />} />
-        <Route path="favorites" element={<Favorites />} />
+        <Route path="/catalog" element={<Catalog />} />
+        <Route path="/favorites" element={<Favorites />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
