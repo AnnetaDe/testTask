@@ -18,8 +18,6 @@ export const SearchPanel = () => {
   const [kmFrom, setKmFrom] = useState('');
   const [kmTo, setKmTo] = useState('');
 
-  const makes = cars.map(car => ({ value: car.make, label: car.make }));
-
   const unicMake = unic(formatMakes(cars), 'value');
   const unicPrice = unic(formatPrice(cars), 'value');
   const unicMileage = unic(formatMileage(cars), 'value');
@@ -52,7 +50,6 @@ export const SearchPanel = () => {
         <Select
           classNames={s.select}
           inputId="price"
-          classNames={s.select}
           styles={searchPanelStyles}
           options={unicPrice}
           onChange={option => dispatch(setPriceFilter(option.value))}

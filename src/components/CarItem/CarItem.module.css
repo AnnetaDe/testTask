@@ -31,8 +31,6 @@
   padding: 0 4px;
   display: flex;
   flex-direction: column;
-  /* justify-items: space-between; */
-  /* margin: auto 0; */
 }
 .line1,
 .line2,
@@ -90,7 +88,6 @@
   background-color: #3470ff;
   color: #fff;
   cursor: pointer;
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 .price {
   margin-left: auto;
