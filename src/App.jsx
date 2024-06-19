@@ -1,16 +1,14 @@
 import './App.css';
 
 import { Route, Routes } from 'react-router-dom';
+import { Layout } from './components/Layout/Layout';
 import { NotFound } from './pages/NotFound/NotFound.jsx';
+import { Home } from './pages/Home';
+import { Catalog } from './pages/Catalog/Catalog.jsx';
+import { Favorites } from './pages/Favorites/Favorites.jsx';
 import { useDispatch } from 'react-redux';
-import { lazy, Suspense, useEffect } from 'react';
+import { useEffect } from 'react';
 import { getAll, getDaily } from './redux/cars/operations.js';
-import { Loader } from './components/Loader/Loader.jsx';
-import { Layout } from './components/Layout/Layout.jsx';
-const Home = lazy(() => import('./pages/Home'));
-const Catalog = lazy(() => import('./pages/Catalog/Catalog.jsx'));
-const Favorites = lazy(() => import('./pages/Favorites/Favorites.jsx'));
-const Layout = lazy(() => import('./components/Layout/Layout.jsx'));
 
 function App() {
   const dispatch = useDispatch();
@@ -21,15 +19,14 @@ function App() {
   }, [dispatch]);
 
   return (
-    <Suspense fallback={<Loader />}>
-      <Layout />
-      <Routes>
+    <Routes>
+      <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="/catalog" element={<Catalog />} />{' '}
-        <Route path="/favorites" element={<Favorites />} />
+        <Route path="catalog" element={<Catalog />} />
         <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Suspense>
+        <Route path="favorites" element={<Favorites />} />
+      </Route>
+    </Routes>
   );
 }
 export default App;
