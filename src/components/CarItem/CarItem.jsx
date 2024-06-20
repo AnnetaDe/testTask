@@ -5,18 +5,14 @@ import { IoMdHeart } from 'react-icons/io';
 import { setModalContent, openModal, selectIsOpen } from '../../redux/cars/modalSlice';
 import { Modal } from '../Modal/Modal';
 import { cityCountry } from '../../helpers';
+import { createPortal } from 'react-dom';
 
-export const CarItem = ({ car }) => {
+export const CarItem = ({ car, onClick }) => {
   const dispatch = useDispatch();
   const liked = useSelector(state => state.cars.liked);
-  const openedModal = useSelector(selectIsOpen);
 
   const handleLike = car => {
     dispatch(likeCar(car));
-  };
-  const handleLearnMore = () => {
-    dispatch(setModalContent(car));
-    dispatch(openModal());
   };
 
   return (
@@ -52,11 +48,10 @@ export const CarItem = ({ car }) => {
             }}
           />
         </button>
-        <button className={s.learnBtn} onClick={handleLearnMore}>
+        <button className={s.learnBtn} onClick={onClick}>
           Learn more
         </button>
       </li>
-      {openedModal && <Modal />}
     </div>
   );
 };

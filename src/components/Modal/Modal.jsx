@@ -2,20 +2,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { closeModal, selectModalContent } from '../../redux/cars/modalSlice';
 import s from './Modal.module.css';
 import { cityCountry } from '../../helpers';
-import { Navigate, useLocation } from 'react-router-dom';
 import { useRef } from 'react';
+import { createPortal } from 'react-dom';
 
 export const Modal = () => {
   const dispatch = useDispatch();
   const car = useSelector(selectModalContent);
-  const backRef = useRef(location);
-  console.log(backRef.current);
 
   const close = () => {
     dispatch(closeModal());
-    if (backRef.current.state) {
-      backRef.current.state = null;
-    }
   };
   const handleBackDropClick = e => {
     if (e.target === e.currentTarget) {
@@ -25,7 +20,6 @@ export const Modal = () => {
   const handleCloseBtnClick = () => {
     close();
   };
-
   return (
     <div className={s.backDrop} onClick={handleBackDropClick}>
       <div className={s.modal}>

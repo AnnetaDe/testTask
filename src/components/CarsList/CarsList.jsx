@@ -10,6 +10,9 @@ import {
 } from '../../redux/filter/filterSelectors';
 import { Loader } from '../Loader/Loader';
 import { useLocation } from 'react-router-dom';
+import { openModal, selectIsOpen, setModalContent } from '../../redux/cars/modalSlice';
+import { Modal } from '../Modal/Modal';
+import { createPortal } from 'react-dom';
 
 export const CarsList = () => {
   const dispatch = useDispatch();
@@ -17,10 +20,14 @@ export const CarsList = () => {
   const moreToLoad = useSelector(selectMoreToLoad);
   const isLoading = useSelector(selectIsLoading);
   const isError = useSelector(selectIsError);
-  const location = useLocation();
+  const openedModal = useSelector(selectIsOpen);
 
   const handleLoadMore = () => {
     dispatch(loadMore());
+  };
+  const handleLearnMore = car => {
+    dispatch(setModalContent(car));
+    dispatch(openModal());
   };
 
   return isLoading ? (
@@ -29,9 +36,10 @@ export const CarsList = () => {
     <div className={s.carListWrapper}>
       <ul className={s.carsList}>
         {filteredCars.map(car => (
-          <CarItem key={car.id} car={car} />
+          <CarItem key={car.id} car={car} onClick={() => handleLearnMore(car)} />
         ))}
       </ul>
+      {openedModal && createPortal(<Modal />, document.body)}
       {isLoading && <p>Loading...</p>}
       {isError && <p>Error fetching cars.</p>}
       {!isLoading && !isError && moreToLoad && filteredCars.length >= 12 && (
