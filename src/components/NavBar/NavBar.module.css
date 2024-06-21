@@ -10,10 +10,12 @@
     margin-left: 1rem;
     padding: 24px;
   }
+
   a:hover {
     color: #3470ff;
   }
 }
+
 .title {
   font-size: 34px;
   font-weight: 500;
@@ -34,7 +36,4 @@
     font-family: var(--font-family);
     color: rgba(18, 20, 23, 0.5);
   }
-}
-.active {
-  color: #3470ff;
 }

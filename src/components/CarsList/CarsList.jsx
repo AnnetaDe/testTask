@@ -9,7 +9,6 @@ import {
   selectIsError,
 } from '../../redux/filter/filterSelectors';
 import { Loader } from '../Loader/Loader';
-import { useLocation } from 'react-router-dom';
 import { openModal, selectIsOpen, setModalContent } from '../../redux/cars/modalSlice';
 import { Modal } from '../Modal/Modal';
 import { createPortal } from 'react-dom';
