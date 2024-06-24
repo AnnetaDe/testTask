@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom';
 import s from './NavBar.module.css';
-import clsx from 'clsx';
 
 export const NavBar = () => {
   return (
@@ -10,7 +9,9 @@ export const NavBar = () => {
         <p>Car rental company</p>
       </NavLink>
       <nav className={s.navBar}>
-        <NavLink to="/">Home</NavLink>
+        <NavLink className={s.nlink} to="/">
+          Home
+        </NavLink>
         <NavLink to="/catalog">Catalog</NavLink>
         <NavLink to="/favorites">Favorites</NavLink>
       </nav>

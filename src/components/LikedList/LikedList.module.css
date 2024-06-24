@@ -16,10 +16,6 @@
   border: none;
   align-items: center;
   border-radius: 14px;
-  a {
-    text-decoration: none;
-    color: white;
-  }
 }
 .linkToCatalog:hover {
   background-color: #1f4ae5;
