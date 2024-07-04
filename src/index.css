@@ -1,22 +1,23 @@
 @import url('./css/fonts.css');
 @import url('./css/reset.css');
 :root {
-  --main-border-radius: 14px;
+  --main-border-radius: 0.875rem;
   --font-family-2: 'Montserrat', sans-serif;
   --font-family: 'Manrope', sans-serif;
   --background: '#fff';
 }
-div#root {
-  max-width: 1200px;
-  margin: 0 auto;
-}
+
 body {
   font-family: var(--font-family);
+  background-color: var(--background);
+  color: #121417;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 button {
   font-family: var(--font-family);
-  padding: 10px 30px;
+  padding: 0.625rem 1.875rem;
   border: 1px solid transparent;
   border-radius: var(--main-border-radius);
   background-color: #0b44cd;

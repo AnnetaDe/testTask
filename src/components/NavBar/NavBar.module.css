@@ -1,7 +1,6 @@
 .header {
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   width: 100%;
   align-items: center;
 }
@@ -41,6 +40,7 @@ nav a:hover {
   .header {
     p {
       font-size: 24px;
+      flex-direction: row;
     }
   }
   .title {
@@ -54,6 +54,7 @@ nav a:hover {
 @media only screen and (min-width: 1280px) {
   .header {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     width: 100%;
     align-items: center;

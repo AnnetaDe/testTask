@@ -1,7 +1,7 @@
 .dailyList {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  gap: 1.5em;
   margin: 0 auto;
   padding: 20px;
   max-width: 1200px;
@@ -24,6 +24,7 @@
   transform: offsetY(-4px);
 }
 .overlay {
+  display: block;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -37,53 +38,49 @@
   opacity: 0;
   transition: opacity 0.3s;
 }
-
+.dailyPicksContainer {
+  text-align: center;
+  justify-content: center;
+}
 .dailyItem:hover .overlay {
   opacity: 1;
 }
 
 .overlayCont {
   text-align: center;
-}
-
-.make {
-  font-family: var(--font-family-2);
-  margin: 0;
-  font-size: 46px;
-  margin: 15px 0 10px;
-  font-weight: 300;
-  color: #efefefa0;
-}
-.make :hover {
-  position: absolute;
-}
-.title {
-  font-family: var(--font-family-2);
-  font-size: 46px;
-  font-weight: 300;
-  color: #121417;
-}
-.dailyPicksContainer {
-  text-align: center;
-  justify-content: center;
-
-  height: 100vh;
-}
-.btn {
-  margin-top: 20px;
-  padding: 10px 20px;
-  border-radius: 14px;
-  background-color: #3571ff;
-  color: white;
-  font-size: 20px;
-  font-weight: 500;
-  cursor: pointer;
-  border: none;
-  a {
-    text-decoration: none;
-    color: white;
+  .make {
+    font-family: var(--font-family-2);
+    margin: 0;
+    font-size: 46px;
+    margin: 15px 0 10px;
+    font-weight: 300;
+    color: #efefefa0;
   }
-}
-.btn:hover {
-  background-color: #1f4ae5;
+  .make :hover {
+    position: absolute;
+  }
+  .title {
+    font-family: var(--font-family-2);
+    font-size: 2rem;
+    font-weight: 300;
+    color: #121417;
+  }
+  .btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 14px;
+    background-color: #3571ff;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
+  .btn:hover {
+    background-color: #1f4ae5;
+  }
 }
