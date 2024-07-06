@@ -11,7 +11,10 @@ export const DailyPicksList = () => {
       <ul className={s.dailyList}>
         {daily.map(({ id, make, model, img, rentalCompany }) => (
           <li className={s.dailyItem} key={id}>
-            <img className={s.dailyImg} src={img} alt={rentalCompany} />{' '}
+            <div className={s.imgContainer}>
+              <img className={s.dailyImg} src={img} alt={rentalCompany} />
+            </div>
+
             <div className={s.overlay}>
               <div className={s.overlayCont}>
                 <h3 className={s.make}>
