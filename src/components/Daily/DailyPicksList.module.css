@@ -4,16 +4,16 @@
 }
 .title {
   font-family: var(--font-family-2);
-  font-size: 2em;
+
   font-weight: 300;
   color: #121417;
+  margin-bottom: 1em;
 }
 .dailyList {
   --column-count: 1;
   display: grid;
   grid-template-columns: repeat(var(--column-count), 1fr);
-  gap: 1rem;
-  margin: 0 auto;
+  gap: 0.5rem;
   padding: 1em;
   max-width: 75em;
 }
@@ -34,11 +34,10 @@
 }
 .dailyImg {
   width: 100%;
-  display: block;
   object-fit: contain;
 }
 .dailyItem :hover {
-  transform: offsetY(-4px);
+  transform: offsetY(-4px) scale(1.02);
 }
 .overlay {
   position: absolute;
@@ -48,10 +47,9 @@
   right: 0;
   background: rgba(0, 0, 0, 0.5);
   color: white;
-
   justify-content: center;
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.45s cubic-bezier(0, 0, 0.21, 1);
 }
 
 .dailyItem:hover .overlay {
@@ -63,9 +61,12 @@
   .make {
     font-family: var(--font-family-2);
     margin: 0;
-    font-size: inherit;
+    font-size: 2em;
     font-weight: 300;
     color: #efefefa0;
+  }
+  .rentalCompany {
+    margin-bottom: 1em;
   }
 }
 @media screen and (min-width: 768px) {

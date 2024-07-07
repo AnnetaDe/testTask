@@ -5,8 +5,9 @@ export const searchPanelStyles = {
     backgroundColor: '#F7F7FB',
     color: '#121417',
     borderCollapse: 'separate',
-    width: '224px',
+    width: '177px',
     borderRadius: '14px',
+    fontSize: '12px',
   }),
   dropdownIndicator: baseStyles => ({
     ...baseStyles,
@@ -14,12 +15,12 @@ export const searchPanelStyles = {
   }),
   menu: baseStyles => ({
     ...baseStyles,
-    padding: '8px',
+    padding: '4px',
     background: '#fff',
     borderCollapse: 'separate',
     borderRadius: '14px',
     scrollBehavior: 'smooth',
-    fontSize: '16px',
+    fontSize: '14px',
   }),
   option: (baseStyles, state) => ({
     ...baseStyles,
@@ -30,7 +31,7 @@ export const searchPanelStyles = {
   singleValue: baseStyles => ({
     ...baseStyles,
     color: '#121417',
-    fontSize: '18px',
+    fontSize: '14px',
     fontWeight: '500',
   }),
 
@@ -40,7 +41,7 @@ export const searchPanelStyles = {
   }),
   valueContainer: baseStyles => ({
     ...baseStyles,
-    padding: '14px 14px 14px 18px',
+    padding: '0.5rem 1rem',
   }),
 
   cursor: 'pointer',
@@ -51,7 +52,7 @@ export const from = {
     ...baseStyles,
     borderColor: state.isFocused ? 'grey' : ' #F7F7FB',
 
-    width: '160px',
+    width: '180px',
     backgroundColor: '#F7F7FB',
     borderCollapse: 'collapse',
     borderRadius: '14px 0 0 14px',
@@ -62,12 +63,12 @@ export const from = {
   }),
   menu: baseStyles => ({
     ...baseStyles,
-    padding: '8px',
+    padding: '4px',
     background: '#fff',
     borderCollapse: 'separate',
     borderRadius: '14px',
     scrollBehavior: 'smooth',
-    fontSize: '16px',
+    fontSize: '14px',
   }),
   option: (baseStyles, state) => ({
     ...baseStyles,
@@ -79,7 +80,7 @@ export const from = {
   singleValue: baseStyles => ({
     ...baseStyles,
     color: '#121417',
-    fontSize: '18px',
+    fontSize: '14px',
     fontWeight: '500',
   }),
 
@@ -89,7 +90,7 @@ export const from = {
   }),
   valueContainer: baseStyles => ({
     ...baseStyles,
-    padding: '14px 14px 14px 18px',
+    padding: '0.5em 1em',
   }),
 
   cursor: 'pointer',
@@ -115,7 +116,7 @@ export const to = {
     borderCollapse: 'collapse',
     borderRadius: '14px',
     scrollBehavior: 'smooth',
-    fontSize: '16px',
+    fontSize: '14px',
   }),
   option: (baseStyles, state) => ({
     ...baseStyles,
@@ -127,7 +128,7 @@ export const to = {
   singleValue: baseStyles => ({
     ...baseStyles,
     color: '#121417',
-    fontSize: '18px',
+    fontSize: '14px',
     fontWeight: '500',
   }),
 
@@ -137,7 +138,7 @@ export const to = {
   }),
   valueContainer: baseStyles => ({
     ...baseStyles,
-    padding: '14px 14px 14px 18px',
+    padding: '0.5em 1em',
   }),
 
   cursor: 'pointer',

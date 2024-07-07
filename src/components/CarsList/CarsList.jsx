@@ -41,6 +41,7 @@ export const CarsList = () => {
       {openedModal && createPortal(<Modal />, document.body)}
       {isLoading && <p>Loading...</p>}
       {isError && <p>Error fetching cars.</p>}
+
       {!isLoading && !isError && moreToLoad && filteredCars.length >= 12 && (
         <button className={s.loadMoreBtn} onClick={handleLoadMore}>
           Load More

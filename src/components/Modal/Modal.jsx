@@ -2,8 +2,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { closeModal, selectModalContent } from '../../redux/cars/modalSlice';
 import s from './Modal.module.css';
 import { cityCountry } from '../../helpers';
-import { useRef } from 'react';
-import { createPortal } from 'react-dom';
 
 export const Modal = () => {
   const dispatch = useDispatch();

@@ -54,7 +54,7 @@ export const SearchPanel = () => {
           options={unicPrice}
           onChange={option => dispatch(setPriceFilter(option.value))}
           isSearchable={true}
-          placeholder="Search by price"
+          placeholder="Price up to"
         />
       </div>
       <div className={s.fromTo}>

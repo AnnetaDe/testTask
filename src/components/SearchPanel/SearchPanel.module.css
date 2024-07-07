@@ -1,8 +1,9 @@
 .searchPanel {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
-  margin-bottom: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 2fr));
+
+  gap: 8px;
+  margin-bottom: 2rem;
 }
 ::-webkit-scrollbar {
   width: 10px;
@@ -18,27 +19,17 @@
 .fromToSelectors {
   display: flex;
 }
-.select,
-.selectFrom {
-  margin-top: 8px;
-}
 
 .label {
   color: #8a8a89;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 18px;
 }
 
 @media only screen and (min-width: 768px) {
   .searchPanel {
-    gap: 18px;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 3fr));
   }
 
-  .select,
-  .selectFrom {
-    margin-top: 8px;
-  }
   .label {
     font-size: 14px;
     line-height: 18px;
@@ -46,13 +37,9 @@
 }
 @media only screen and (min-width: 1280px) {
   .searchPanel {
-    gap: 18px;
+    gap: 16px;
   }
 
-  .select,
-  .selectFrom {
-    margin-top: 24px;
-  }
   .label {
     font-size: 14px;
     line-height: 18px;
