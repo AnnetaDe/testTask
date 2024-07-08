@@ -71,4 +71,7 @@
   .dailyList {
     --column-count: 2;
   }
+  .title {
+    font-size: 2em;
+  }
 }
