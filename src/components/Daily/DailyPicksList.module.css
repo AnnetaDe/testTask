@@ -4,7 +4,6 @@
 }
 .title {
   font-family: var(--font-family-2);
-
   font-weight: 300;
   color: #121417;
   margin-bottom: 1em;
@@ -22,7 +21,6 @@
   max-width: 35rem;
   transition: transform 0.3s, box-shadow 0.3s;
   position: relative;
-  border: #121417 1px solid;
   aspect-ratio: 8/4;
   overflow: hidden;
   align-items: center;

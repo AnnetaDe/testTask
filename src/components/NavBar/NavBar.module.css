@@ -3,7 +3,7 @@
   flex-direction: column;
   width: 100%;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 .navBar {
   display: flex;
@@ -39,6 +39,8 @@ nav a:hover {
 
 @media only screen and (min-width: 768px) {
   .header {
+    margin-bottom: 2rem;
+
     p {
       font-size: 24px;
       flex-direction: row;
@@ -62,6 +64,8 @@ nav a:hover {
     justify-content: space-between;
     width: 100%;
     align-items: center;
+    margin-bottom: 2rem;
+
     p {
       font-size: 24px;
       font-weight: 400;

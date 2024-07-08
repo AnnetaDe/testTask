@@ -2,15 +2,14 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 1em;
 }
 .linkToCatalog {
   margin-top: 20px;
   padding: 10px 20px;
-
   background-color: #3571ff;
   color: white;
-  font-size: 36px;
+  font-size: 24px;
   font-weight: 500;
   cursor: pointer;
   border: none;
@@ -27,4 +26,9 @@
   color: #121417;
   margin-bottom: 24px;
   margin-top: 36px;
+}
+@media screen and (min-width: 768px) {
+  .linkToCatalog {
+    font-size: 36px;
+  }
 }

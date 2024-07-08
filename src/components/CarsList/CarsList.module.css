@@ -1,8 +1,7 @@
 .carsList {
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: center; */
-  gap: calc((100% - 274px * 4) / 4); /* 300px is the width of the car card */
+  gap: calc((100% - 274px * 4) / 4);
 }
 .loadMoreBtn {
   color: #3470ff;
