@@ -1,5 +1,3 @@
-import s from './Container.module.css';
-
 export const Container = ({ children }) => {
-  return <div className={s.container}>{children}</div>;
+  return <div className="flex flex-col px-16 max-w-[1440px]">{children}</div>;
 };

@@ -1,43 +1,40 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { toNumber } from '../../helpers';
 
-export const selectBrandFilter = state => state.filters.make;
-export const selectPriceFilter = state => state.filters.price;
-export const selectFromFilter = state => state.filters.from;
-export const selectToFilter = state => state.filters.to;
-export const selectAllCars = state => state.cars.allItems;
+export const selectEquipmentFilter = state => state.filters.equipment;
+export const selectTypeFilter = state => state.filters.type;
+export const selectLocationFilter = state => state.filters.location;
+const selectAllCars = state => state.cars.items;
 export const selectCurrentPage = state => state.cars.currentPage;
 export const selectPerPage = state => state.cars.perPage;
-export const selectMoreToLoad = state => state.cars.moreToLoad;
+export const selectMoreToLoad = state => state.cars.currentPage < state.cars.countPages;
 export const selectCountPages = state => state.cars.countPages;
 export const selectIsLoading = state => state.cars.isLoading;
 export const selectIsError = state => state.cars.isError;
-export const selectAllBrands = state => state.cars.liked;
-export const selectFilter = state => state.filters;
-export const selectLiked = state => state.cars.liked;
-export const selectDaily = state => state.daily.dailylist;
 
 export const selectFilteredCars = createSelector(
   [
     selectAllCars,
-    selectBrandFilter,
-    selectPriceFilter,
-    selectFromFilter,
-    selectToFilter,
+    selectEquipmentFilter,
+    selectTypeFilter,
+    selectLocationFilter,
     selectCurrentPage,
     selectPerPage,
     selectMoreToLoad,
+    selectCountPages,
+    selectIsLoading,
+    selectIsError,
   ],
-  (cars, brand, price, from, to, currentPage, perPage) => {
+  (cars, equipment, type, location, currentPage, perPage) => {
     const filteredCars = cars.filter(car => {
-      const brandMatch = brand ? car.make === brand : true;
-      const priceMatch = price ? toNumber(car.rentalPrice) <= price : true;
-      const fromMatch = from ? car.mileage >= from : true;
-      const toMatch = to ? car.mileage <= to : true;
-
-      return brandMatch && priceMatch && fromMatch && toMatch;
+      const equipmentMatch = equipment ? car.equipment === equipment : true;
+      const typeMatch = type ? car.type === type : true;
+      const locationMatch = location ? car.location === location : true;
+      return equipmentMatch && typeMatch && locationMatch;
     });
 
-    return filteredCars.slice(0, currentPage * perPage);
+    const recountedTotal = filteredCars.length;
+    const recountedPages = Math.ceil(recountedTotal / perPage);
+
+    return filteredCars;
   }
 );

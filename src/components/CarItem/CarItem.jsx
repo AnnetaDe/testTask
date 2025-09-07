@@ -1,11 +1,11 @@
+import { BsStarFill } from 'react-icons/bs';
+import { CgHeart } from 'react-icons/cg';
+import { GrMapLocation } from 'react-icons/gr';
 import { useDispatch, useSelector } from 'react-redux';
-import s from './CarItem.module.css';
+import { Link } from 'react-router-dom';
 import { likeCar } from '../../redux/cars/slice';
-import { IoMdHeart } from 'react-icons/io';
-import { setModalContent, openModal, selectIsOpen } from '../../redux/cars/modalSlice';
-import { Modal } from '../Modal/Modal';
-import { cityCountry } from '../../helpers';
-import { createPortal } from 'react-dom';
+import CategoriesList from '../Categories/CategoriesList';
+import { RedButtonLink } from '../RedButton/RedButton';
 
 export const CarItem = ({ car, onClick }) => {
   const dispatch = useDispatch();
@@ -14,44 +14,81 @@ export const CarItem = ({ car, onClick }) => {
   const handleLike = car => {
     dispatch(likeCar(car));
   };
+  const toPickFrom = [
+    'automatic',
+    'AC',
+    'petrol',
+    'radio',
+    'bathroom',
+    'refrigerator',
+    'microwave',
+    'gas',
+    'water',
+  ];
+  const handleCategory = car => {
+    // Handle category selection
+    const pickedCategory = [];
+    for (const [key, value] of Object.entries(car)) {
+      if (toPickFrom.includes(key) && value) {
+        pickedCategory.push(key);
+      }
+    }
+    console.log(pickedCategory);
+    return pickedCategory;
+  };
 
   return (
-    <div className={s.itemContainer}>
-      <li className={s.carItem}>
-        <div className={s.imgContainer}>
-          <img className={s.carImg} src={car.img} alt={car.rentalCompany} height={274} />
+    <li className="">
+      <div className=" flex gap-6 cursor-pointer" onClick={onClick}>
+        <div className="relative h-[320px] w-[292px] overflow-hidden rounded-lg shadow-md">
+          <Link to={`/cars/${car.id}`} className="block">
+            <img
+              src={car.gallery[0].thumb}
+              alt={car.name}
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+          </Link>{' '}
         </div>
-        <div className={s.texContainer}>
-          <div className={s.line1}>
-            <p>{car.make}</p>
-            <p className={s.model}>{car.model}</p>
-            <p>{car.year}</p>
-            <p className={s.price}> {car.rentalPrice}</p>
+        <div className="flex flex-col w-full  ">
+          <div className="flex items-center justify-between ">
+            <p className="text-2xl font-semibold"> {car.name}</p>
+            <div className="flex items-center justify-end gap-2">
+              <p className="text-2xl font-semibold">€{car.price}</p>
+              <span className="">
+                <CgHeart size={24} />
+              </span>
+            </div>
           </div>
 
-          <div className={s.line2}>
-            <p>{cityCountry(car.address)} | </p>
-            <p>{car.rentalCompany} | </p>
+          <div className="flex items-center gap-4 mt-2 ">
+            <div className="flex items-center justify-start gap-1">
+              <span>
+                <BsStarFill color="#FFC531" />
+              </span>{' '}
+              <p className="">
+                {car.reviews.reduce((acc, review) => acc + review.reviewer_rating, 0) /
+                  car.reviews.length}{' '}
+                ({car.reviews.length} reviews)
+              </p>
+            </div>
+            <div className="flex items-center justify-start gap-1">
+              <span>
+                <GrMapLocation />
+              </span>
+              <p>{car.location}</p>
+            </div>
           </div>
-          <div className={s.line3}>
-            <p> {car.type} |</p>
-            <p> {car.make} |</p>
-            <p> {car.mileage} </p>
+          <div className="my-6 line-clamp-1">
+            <p className=" text-dark-grey">{car.description}</p>
           </div>
+          <div className="mb-6">
+            <CategoriesList categories={handleCategory(car)} />
+          </div>
+          <RedButtonLink to={`/cars/${car.id}`} text="Learn More" />
         </div>
-        <button className={s.likeBtn} onClick={() => handleLike(car)}>
-          <IoMdHeart
-            style={{
-              color: liked.find(item => item.id === car.id) ? 'blue' : 'white',
-              fontSize: '18px',
-              cursor: 'pointer',
-            }}
-          />
-        </button>
-        <button className={s.learnBtn} onClick={onClick}>
-          Learn more
-        </button>
-      </li>
-    </div>
+      </div>
+    </li>
   );
 };

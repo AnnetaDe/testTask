@@ -1,49 +1,35 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { CarItem } from '../CarItem/CarItem';
-import { loadMore } from '../../redux/cars/slice';
-import s from './CarsList.module.css';
 import {
   selectFilteredCars,
-  selectMoreToLoad,
-  selectIsLoading,
   selectIsError,
+  selectIsLoading,
+  selectMoreToLoad,
 } from '../../redux/filter/filterSelectors';
-import { Loader } from '../Loader/Loader';
-import { openModal, selectIsOpen, setModalContent } from '../../redux/cars/modalSlice';
-import { Modal } from '../Modal/Modal';
-import { createPortal } from 'react-dom';
+import { CarItem } from '../CarItem/CarItem';
 
 export const CarsList = () => {
   const dispatch = useDispatch();
-  const filteredCars = useSelector(selectFilteredCars);
-  const moreToLoad = useSelector(selectMoreToLoad);
-  const isLoading = useSelector(selectIsLoading);
-  const isError = useSelector(selectIsError);
-  const openedModal = useSelector(selectIsOpen);
+  const { filteredCars, isLoading, isError, moreToLoad, openedModal } = useSelector(state => ({
+    filteredCars: selectFilteredCars(state),
+    isLoading: selectIsLoading(state),
+    isError: selectIsError(state),
+    moreToLoad: selectMoreToLoad(state),
+  }));
 
-  const handleLoadMore = () => {
-    dispatch(loadMore());
-  };
-  const handleLearnMore = car => {
-    dispatch(setModalContent(car));
-    dispatch(openModal());
-  };
+  console.log(filteredCars);
 
-  return isLoading ? (
-    <Loader />
-  ) : (
-    <div className={s.carListWrapper}>
-      <ul className={s.carsList}>
+  return (
+    <div className="">
+      <ul className="">
         {filteredCars.map(car => (
           <CarItem key={car.id} car={car} onClick={() => handleLearnMore(car)} />
         ))}
       </ul>
-      {openedModal && createPortal(<Modal />, document.body)}
       {isLoading && <p>Loading...</p>}
       {isError && <p>Error fetching cars.</p>}
 
       {!isLoading && !isError && moreToLoad && filteredCars.length >= 12 && (
-        <button className={s.loadMoreBtn} onClick={handleLoadMore}>
+        <button className="" onClick={handleLoadMore}>
           Load More
         </button>
       )}

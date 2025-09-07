@@ -1,19 +1,18 @@
 import { NavLink } from 'react-router-dom';
-import s from './NavBar.module.css';
 
 export const NavBar = () => {
   return (
-    <div className={s.header}>
-      <NavLink to="/" className={s.title}>
-        <h1>YOUR TURN</h1>
-        <p>Car rental company</p>
+    <div className="flex w-full h-full items-center justify-between">
+      <NavLink to="/" className="pr-1">
+        Logo
       </NavLink>
-      <nav className={s.navBar}>
-        <NavLink className={s.nlink} to="/">
+      <nav className="flex gap-8 mx-auto">
+        <NavLink className="hover:text-hover-red" to="/">
           Home
         </NavLink>
-        <NavLink to="/catalog">Catalog</NavLink>
-        <NavLink to="/favorites">Favorites</NavLink>
+        <NavLink className="hover:text-hover-red" to="/catalog">
+          Catalog
+        </NavLink>
       </nav>
     </div>
   );

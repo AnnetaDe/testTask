@@ -7,10 +7,9 @@ const carsSlice = createSlice({
     items: [],
     liked: [],
     currentPage: 1,
-    perPage: 12,
-    moreToLoad: true,
+    perPage: 4,
+    total: 0,
     countPages: 0,
-    allItems: [],
     allBrands: [],
     isLoading: false,
     isError: false,
@@ -18,10 +17,8 @@ const carsSlice = createSlice({
 
   reducers: {
     loadMore(state) {
-      state.currentPage++;
-      state.items = state.allItems.slice(0, state.currentPage * state.perPage);
-      if (state.countPages < state.currentPage) {
-        state.moreToLoad = false;
+      if (state.currentPage < state.countPages) {
+        state.currentPage++;
       }
     },
     likeCar(state, { payload }) {
@@ -41,12 +38,11 @@ const carsSlice = createSlice({
     builder
 
       .addCase(getAll.fulfilled, (state, { payload }) => {
-        // state.items = payload.slice(0, state.perPage);
-        state.allItems = payload;
+        state.items = payload.items;
+        state.total = payload.total;
         state.isLoading = false;
         state.isError = false;
-        state.allBrands = payload.map(item => item.make);
-        state.countPages = payload.length / 12;
+        state.countPages = Math.ceil(payload.total / state.perPage);
       })
 
       .addMatcher(

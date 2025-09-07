@@ -2,11 +2,9 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   filters: {
-    make: '',
-    price: Infinity,
-    from: 0,
-    to: Infinity,
-    loadMore: true,
+    equipment: '',
+    type: '',
+    location: '',
   },
 };
 
@@ -15,26 +13,22 @@ export const filtersSlice = createSlice({
   initialState,
 
   reducers: {
-    setBrandFilter: (state, { payload }) => {
-      state.make = payload;
+    setEquipmentFilter: (state, { payload }) => {
+      state.filters.equipment = payload;
     },
-    setPriceFilter: (state, { payload }) => {
-      state.price = payload;
-    },
-
-    setFromFilter: (state, { payload }) => {
-      state.from = payload;
-    },
-    setToFilter: (state, { payload }) => {
-      state.to = payload;
+    setTypeFilter: (state, { payload }) => {
+      state.filters.type = payload;
     },
 
-    setCurrentPage: (state, { payload }) => {
-      state.currentPage = payload;
+    setLocationFilter: (state, { payload }) => {
+      state.filters.location = payload;
+    },
+    resetFilters: state => {
+      state.filters = initialState.filters;
     },
   },
 });
 
-export const { resetFilters, setBrandFilter, setPriceFilter, setFromFilter, setToFilter } =
+export const { resetFilters, setEquipmentFilter, setTypeFilter, setLocationFilter } =
   filtersSlice.actions;
 export const filtersSliceReducer = filtersSlice.reducer;
