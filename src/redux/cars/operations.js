@@ -17,3 +17,12 @@ export const getAll = createAsyncThunk(
     }
   }
 );
+
+export const getOne = createAsyncThunk('campers/getOne', async (id, thunkApi) => {
+  try {
+    const { data } = await mockApi.get(`campers/${id}`);
+    return data;
+  } catch (err) {
+    return thunkApi.rejectWithValue(err.message);
+  }
+});

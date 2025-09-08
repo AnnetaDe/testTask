@@ -14,14 +14,12 @@ export const CarPage = () => {
   const dispatch = useDispatch();
 
   const { carId: id } = useParams();
-  console.log('id', id);
   const location = useLocation();
   const car = location.state; // passed car object
 
   const picked = handleCategory(car);
 
   const gallery = car.gallery.map(img => img.original);
-  console.log('gallery', gallery);
   const randomKey = () => Math.random().toString(36).substring(2, 15);
   return (
     <section className=" py-14 h-full bg-white">

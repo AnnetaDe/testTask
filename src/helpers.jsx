@@ -9,9 +9,10 @@ import {
   TbMicrowave,
 } from 'react-icons/tb';
 
-export const toPickFrom = [
+/* whitelist (lowercase keys in your car object) */
+export const PICK = [
   'automatic',
-  'AC',
+  'ac',
   'petrol',
   'radio',
   'bathroom',
@@ -20,24 +21,18 @@ export const toPickFrom = [
   'gas',
   'water',
 ];
-export const handleCategory = car => {
-  const pickedCategory = [];
-  for (const [key, value] of Object.entries(car)) {
-    if (toPickFrom.includes(key) && value) {
-      pickedCategory.push(key);
-    }
-  }
-  return pickedCategory;
+
+/* id -> label + Icon */
+export const FEATURE = {
+  automatic: { label: 'Automatic', Icon: TbAutomaticGearbox },
+  ac: { label: 'AC', Icon: TbAirConditioning },
+  petrol: { label: 'Petrol', Icon: TbGasStation },
+  radio: { label: 'Radio', Icon: MdRadio },
+  bathroom: { label: 'Bathroom', Icon: MdBathroom },
+  refrigerator: { label: 'Refrigerator', Icon: TbFridge },
+  microwave: { label: 'Microwave', Icon: TbMicrowave },
+  gas: { label: 'Gas', Icon: TbFlame },
+  water: { label: 'Water', Icon: TbDroplet },
 };
 
-export const cnf = [
-  { icon: <TbAutomaticGearbox />, catName: 'Automatic' },
-  { icon: <TbAirConditioning />, catName: 'AC' },
-  { icon: <TbGasStation />, catName: 'Petrol' },
-  { icon: <MdRadio />, catName: 'Radio' },
-  { icon: <MdBathroom />, catName: 'Bathroom' },
-  { icon: <TbFridge />, catName: 'Refrigerator' },
-  { icon: <TbMicrowave />, catName: 'Microwave' },
-  { icon: <TbFlame />, catName: 'Gas' },
-  { icon: <TbDroplet />, catName: 'Water' },
-];
+export const handleCategory = car => PICK.filter(k => !!car?.[k]);
