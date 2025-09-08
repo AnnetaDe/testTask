@@ -3,7 +3,7 @@ import './App.css';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
-import { CarItem } from './components/CarItem/CarItem.jsx';
+import { CarPage } from './components/CarPage/CarPage.jsx';
 import { Layout } from './components/Layout/Layout';
 import { Catalog } from './pages/Catalog/Catalog.jsx';
 import { Home } from './pages/Home';
@@ -22,7 +22,7 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="catalog" element={<Catalog />} />
-        <Route path="catalog/:carId" element={<CarItem />} />
+        <Route path="cars/:carId" element={<CarPage />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

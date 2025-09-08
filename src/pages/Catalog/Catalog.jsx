@@ -4,7 +4,7 @@ import { SearchPanel } from '../../components/SearchPanel/SearchPanel';
 
 export const Catalog = () => {
   return (
-    <div className=" flex gap-10 px-16">
+    <div className=" py-14 flex gap-10 px-16">
       <div>
         <SearchPanel />
         <Filters />

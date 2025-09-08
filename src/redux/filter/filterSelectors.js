@@ -9,6 +9,7 @@ export const selectCountPages = state => state.cars.countPages;
 export const selectIsLoading = state => state.cars.isLoading;
 export const selectIsError = state => state.cars.isError;
 export const selectAllCars = s => s.cars.items;
+export const selectLikedCars = s => s.cars.liked;
 export const selectType = s => s.filters.form;
 export const selectLocation = s => s.filters.location;
 export const selectPage = s => s.cars?.currentPage ?? 1;

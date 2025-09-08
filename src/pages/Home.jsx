@@ -1,5 +1,5 @@
 import { Container } from '../components/Container/Container';
-import { RedButtonLink } from '../components/RedButton/RedButton';
+import { RedButtonLink } from '../components/RedButton/RedButtonLink';
 
 export const Home = () => {
   return (

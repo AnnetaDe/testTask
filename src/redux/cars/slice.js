@@ -10,7 +10,6 @@ const carsSlice = createSlice({
     perPage: 4,
     total: 0,
     totalPages: 0,
-    allBrands: [],
     isLoading: false,
     isError: false,
   },
@@ -19,16 +18,15 @@ const carsSlice = createSlice({
     loadMore(state) {
       state.currentPage++;
     },
-    likeCar(state, { payload }) {
-      const item = state.allItems.find(item => item.id === payload.id);
-      if (item) {
-        const index = state.liked.findIndex(item => item.id === payload.id);
-        if (index === -1) {
-          state.liked = [...state.liked, item];
-        } else {
-          state.liked = state.liked.filter(item => item.id !== payload.id);
-        }
+
+    likeCar(state, { payload: { id } }) {
+      const likedIdx = state.liked.findIndex(x => x.id === id);
+      if (likedIdx !== -1) {
+        state.liked.splice(likedIdx, 1); // unlike
+        return;
       }
+      const item = state.items.find(x => x.id === id);
+      if (item) state.liked.push(item); // like
     },
   },
 
