@@ -4,7 +4,7 @@ import { GrMapLocation } from 'react-icons/gr';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { likeCar } from '../../redux/cars/slice';
-import CategoriesList from '../Categories/CategoriesList';
+import { CategoriesList } from '../Categories/CategoriesList';
 import { RedButtonLink } from '../RedButton/RedButton';
 
 export const CarItem = ({ car, onClick }) => {
@@ -33,12 +33,12 @@ export const CarItem = ({ car, onClick }) => {
         pickedCategory.push(key);
       }
     }
-    console.log(pickedCategory);
     return pickedCategory;
   };
+  const pickedCategory = handleCategory(car);
 
   return (
-    <li className="">
+    <li className="p-6 border border-g1 rounded-4xl shadow-sm hover:shadow-md transition-shadow duration-300">
       <div className=" flex gap-6 cursor-pointer" onClick={onClick}>
         <div className="relative h-[320px] w-[292px] overflow-hidden rounded-lg shadow-md">
           <Link to={`/cars/${car.id}`} className="block">
@@ -84,7 +84,7 @@ export const CarItem = ({ car, onClick }) => {
             <p className=" text-dark-grey">{car.description}</p>
           </div>
           <div className="mb-6">
-            <CategoriesList categories={handleCategory(car)} />
+            <CategoriesList categories={pickedCategory} />
           </div>
           <RedButtonLink to={`/cars/${car.id}`} text="Learn More" />
         </div>

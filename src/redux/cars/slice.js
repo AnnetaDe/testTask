@@ -9,7 +9,7 @@ const carsSlice = createSlice({
     currentPage: 1,
     perPage: 4,
     total: 0,
-    countPages: 0,
+    totalPages: 0,
     allBrands: [],
     isLoading: false,
     isError: false,
@@ -17,9 +17,7 @@ const carsSlice = createSlice({
 
   reducers: {
     loadMore(state) {
-      if (state.currentPage < state.countPages) {
-        state.currentPage++;
-      }
+      state.currentPage++;
     },
     likeCar(state, { payload }) {
       const item = state.allItems.find(item => item.id === payload.id);
@@ -38,7 +36,7 @@ const carsSlice = createSlice({
     builder
 
       .addCase(getAll.fulfilled, (state, { payload }) => {
-        state.items = payload.items;
+        state.items = [...state.items, ...payload.items];
         state.total = payload.total;
         state.isLoading = false;
         state.isError = false;

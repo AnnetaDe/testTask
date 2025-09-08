@@ -14,7 +14,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAll());
+    dispatch(getAll({ page: 1, limit: 4 }));
   }, [dispatch]);
 
   return (

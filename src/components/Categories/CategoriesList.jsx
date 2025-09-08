@@ -1,12 +1,14 @@
 import { CategoryBadge } from './CategoryBadge';
+
 export const CategoriesList = categoriesList => {
+  const randomKey = () => Math.random().toString(36).substring(2, 15);
   return (
     <ul className="flex flex-wrap gap-2">
-      {categoriesList.categories.map((category, index) => {
-        return <CategoryBadge name={category} key={index} />;
-      })}
+      {categoriesList.categories.map(element => (
+        <li key={randomKey()}>
+          <CategoryBadge name={element} />
+        </li>
+      ))}
     </ul>
   );
 };
-
-export default CategoriesList;

@@ -5,13 +5,13 @@ export const getAll = createAsyncThunk(
   'campers/get',
   async ({ page = 1, limit = 4 } = {}, thunkApi) => {
     try {
-      const res = await mockApi.get('campers', {
+      const { data } = await mockApi.get('campers', {
         params: { page, limit },
       });
 
-      console.log('response', res.data);
+      console.log('response', data);
 
-      return res.data;
+      return data;
     } catch (err) {
       return thunkApi.rejectWithValue(err.message);
     }

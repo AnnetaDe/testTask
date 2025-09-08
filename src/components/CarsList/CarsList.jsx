@@ -1,38 +1,39 @@
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  selectFilteredCars,
-  selectIsError,
-  selectIsLoading,
-  selectMoreToLoad,
-} from '../../redux/filter/filterSelectors';
+import { getAll } from '../../redux/cars/operations';
+import { loadMore } from '../../redux/cars/slice';
+import { selectFilteredCars } from '../../redux/filter/filterSelectors';
 import { CarItem } from '../CarItem/CarItem';
-
+import { TransparentButton } from '../RedButton/TranspButton';
 export const CarsList = () => {
   const dispatch = useDispatch();
-  const { filteredCars, isLoading, isError, moreToLoad, openedModal } = useSelector(state => ({
-    filteredCars: selectFilteredCars(state),
-    isLoading: selectIsLoading(state),
-    isError: selectIsError(state),
-    moreToLoad: selectMoreToLoad(state),
-  }));
-
-  console.log(filteredCars);
-
+  const filtered = useSelector(selectFilteredCars);
+  const currentPage = useSelector(state => state.cars.currentPage);
+  const perPage = useSelector(state => state.cars.perPage);
+  const total = useSelector(state => state.cars.total);
+  const isLoading = useSelector(state => state.cars.isLoading);
+  const isError = useSelector(state => state.cars.isError);
+  const randomKey = () => Math.random().toString(36).substring(2, 15);
+  const handleLearnMore = car => {
+    console.log('Learn more about', car);
+  };
   return (
     <div className="">
-      <ul className="">
-        {filteredCars.map(car => (
-          <CarItem key={car.id} car={car} onClick={() => handleLearnMore(car)} />
+      <ul className="flex flex-col gap-8 mb-10">
+        {filtered.map(car => (
+          <CarItem key={randomKey()} car={car} onClick={() => handleLearnMore(car)} />
         ))}
       </ul>
       {isLoading && <p>Loading...</p>}
       {isError && <p>Error fetching cars.</p>}
 
-      {!isLoading && !isError && moreToLoad && filteredCars.length >= 12 && (
-        <button className="" onClick={handleLoadMore}>
-          Load More
-        </button>
-      )}
+      <TransparentButton
+        className=""
+        onClick={() => {
+          dispatch(loadMore());
+          dispatch(getAll({ page: currentPage, limit: perPage }));
+        }}
+        text="Load More"
+      />
     </div>
   );
 };
